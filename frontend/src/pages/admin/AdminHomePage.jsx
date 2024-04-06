@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
-import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined,} from '@ant-design/icons';
+import {DesktopOutlined, FileOutlined, PieChartOutlined, TeamOutlined, UserOutlined} from '@ant-design/icons';
 
-import {Breadcrumb, Layout, Menu, theme} from 'antd';
+import {Breadcrumb, Layout, Menu, theme, Button} from 'antd';
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import CreateAppointment from "./appointment/CreateAppointment";
 import MyAppointments from "../technician/Tests";
 import AllTechnicians from "./technician/AllTechnicians";
 import CreateTechnician from "./technician/CreateTechnician";
+import CreateDoctors from './doctor/CreateDoctors';
+import AllDoctors from './doctor/AllDoctors';
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -33,7 +35,7 @@ const items = [
         getItem('All Patients', '4'),
     ]),
     getItem('Doctors', 'sub2', <TeamOutlined/>, [
-        getItem('All Doctors', '6'),
+        getItem('All Doctors', '5'),
         getItem('Create Doctor', '6'),
     ]),
     getItem('Appointments', '9', <FileOutlined/>, [
@@ -69,7 +71,7 @@ const App = () => {
         >
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div className="demo-logo-vertical" style={{ height: '70px', color: "white", marginLeft: '15px', marginTop: '40px'}}><h2> ABC Laboratories</h2></div>
-                {/*<Button onClick={logout}>logout</Button>*/}
+                <Button onClick={logout}>logout</Button>
                 <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={(item) => setActiveMenuItem(item.key)}/>
             </Sider>
             <Layout>
@@ -86,6 +88,9 @@ const App = () => {
                 >
                         {activeMenuItem === '11' && <CreateAppointment />}
                         {activeMenuItem === '10' && <MyAppointments />}
+
+                        {activeMenuItem === '6' && <CreateDoctors />}
+                        {activeMenuItem === '5' && <AllDoctors />}
 
                         {activeMenuItem === 'tech-4' && <AllTechnicians />}
                         {activeMenuItem === 'tech-1' && <CreateTechnician />}
