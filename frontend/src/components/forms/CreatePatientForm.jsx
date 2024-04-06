@@ -2,19 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Form, Button,Select, Typography, Input } from 'antd';
 import {jwtDecode} from "jwt-decode";
 import { success, error} from "../messages/CustomMessage";
-import {registerDoctor} from "../../services/auth";
+import {registerPatient} from "../../services/auth";
 
 
-const CreateDoctorForm = () => {
+const CreatePatientForm = () => {
 
     const [form] = Form.useForm();
 
     const onFinish = (values) => {
         console.log(values)
 
-        //API call for create doctor
+        //API call for create patient
 
-        // registerDoctor(values,localStorage.user)
+
+        // registerPatient(values,localStorage.user)
         //     .then((res) => {
         //         console.log(res);
         //         success('The availability is created successfully');
@@ -38,7 +39,7 @@ const CreateDoctorForm = () => {
             {/* Education Level of student */}
             <Form.Item
                 name="name"
-                label="Doctor Name"
+                label="Patient Name"
                 style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(100% - 16px)' }}
                 rules={[{ required: true, message: 'Please select an educational level!' }]}
             >
@@ -64,22 +65,6 @@ const CreateDoctorForm = () => {
             >
                 <Input.Password />
             </Form.Item>
-            <Form.Item
-                name="specialization"
-                label="Specialization"
-                style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(50% - 8px)' }}
-                rules={[{ required: true, message: 'Please select an educational level!' }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="experience"
-                label="Experience"
-                style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(50% - 8px)' }}
-                rules={[{ required: true, message: 'Please input experience in years' }]}
-            >
-                <Input />
-            </Form.Item>
             
             <Form.Item style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(100% - 16px)' }}>
             <br />
@@ -89,11 +74,11 @@ const CreateDoctorForm = () => {
                     htmlType="submit"
                     style={{ backgroundColor: '#047b9c'}}
                 >
-                    Create Doctor
+                    Create Patient
                 </Button>
             </Form.Item>
         </Form>
     );
 };
 
-export default CreateDoctorForm;
+export default CreatePatientForm;

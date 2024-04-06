@@ -21,4 +21,24 @@ export const registerTechnician = async (user) => {
     );
 };
 
+export const registerDoctor = async (user) => {
+    return await axios.post(
+        'http://localhost:5000/api/v1/auth/register/doctor',
+        user,
+        {
+            headers: {},
+        },
+    );
+};
+
+export const registerPatient = async (user) => {
+    return await axios.post(
+        'http://localhost:5000/api/v1/auth/register/patient',
+        user,
+        {
+            headers: {},
+        },
+    );
+};
+
 

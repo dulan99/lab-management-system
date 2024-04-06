@@ -1,7 +1,7 @@
 import React ,{ useState } from 'react';
 import { Table, Button, ConfigProvider, Empty, Form, Modal, Input } from 'antd';
 
-const DoctorsTable = ({ doctors, loading }) => {
+const PatientsTable = ({ patients, loading }) => {
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -9,20 +9,12 @@ const DoctorsTable = ({ doctors, loading }) => {
 
     const columns = [
         {
-            title: 'Doctor Name',
+            title: 'Patient Name',
             dataIndex: ['name'],
         },
         {
             title: 'Email',
             dataIndex: ['email'],
-        },
-        {
-            title: 'Specialization',
-            dataIndex: ['specialization'],
-        },
-        {
-            title: 'Experience',
-            dataIndex: ['experience'],
         },
         {
             title: 'Edit',
@@ -37,7 +29,7 @@ const DoctorsTable = ({ doctors, loading }) => {
             title: 'Delete',
             dataIndex: 'delete',
             render: (_, record) => (
-                <Button danger onClick={console.log("delete doctor",record._id)}>
+                <Button danger onClick={console.log("delete patient: ",record._id)}>
                     Delete
                 </Button>
             ),
@@ -51,7 +43,8 @@ const DoctorsTable = ({ doctors, loading }) => {
       const onFinish = (values) => {
         console.log(values)
 
-        //API call for update doctor
+        //API call for update patient
+
 
         // registerTechnician(values,localStorage.user)
         //     .then((res) => {
@@ -71,7 +64,7 @@ const DoctorsTable = ({ doctors, loading }) => {
                 <Table
                     loading={loading}
                     columns={columns}
-                    dataSource={doctors ? doctors.map(doctor => ({ ...doctor, key: doctor._id })) : []}
+                    dataSource={patients ? patients.map(patient => ({ ...patient, key: patient._id })) : []}
                     pagination={{ defaultPageSize: 4, position: ['bottomCenter'] }}
                 />
             </ConfigProvider>
@@ -120,22 +113,6 @@ const DoctorsTable = ({ doctors, loading }) => {
             >
                 <Input.Password />
             </Form.Item>
-            <Form.Item
-                name="specialization"
-                label="Specialization"
-                style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(50% - 8px)' }}
-                rules={[{ required: true, message: 'Please select an educational level!' }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="experience"
-                label="Experience"
-                style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(50% - 8px)' }}
-                rules={[{ required: true, message: 'Please input experience in years' }]}
-            >
-                <Input />
-            </Form.Item>
             
             <Form.Item style={{ paddingRight: '8px', display: 'inline-block', width: 'calc(100% - 16px)' }}>
             <br />
@@ -157,4 +134,4 @@ const DoctorsTable = ({ doctors, loading }) => {
     );
 };
 
-export default DoctorsTable;
+export default PatientsTable;
