@@ -29,7 +29,7 @@ const PatientsTable = ({ patients, loading }) => {
             title: 'Delete',
             dataIndex: 'delete',
             render: (_, record) => (
-                <Button danger onClick={console.log("delete patient: ",record._id)}>
+                <Button danger onClick={()=>console.log("delete patient: ",record._id)}>
                     Delete
                 </Button>
             ),

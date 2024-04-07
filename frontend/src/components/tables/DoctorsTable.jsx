@@ -37,7 +37,7 @@ const DoctorsTable = ({ doctors, loading }) => {
             title: 'Delete',
             dataIndex: 'delete',
             render: (_, record) => (
-                <Button danger onClick={console.log("delete doctor",record._id)}>
+                <Button danger onClick={()=>console.log("delete doctor",record._id)}>
                     Delete
                 </Button>
             ),
